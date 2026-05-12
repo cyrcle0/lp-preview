@@ -241,21 +241,15 @@
   margin-right: 2px;
 }
 
-/* B3 mech-bridge — rhetorical landing of ownership pillar before B4 */
+/* B3 mech-bridge — rhetorical landing line after the 4 pillars */
 [data-theme="sketch"] .mech .mech-bridge {
   border-top: 1.5px dashed var(--ink);
   margin-block: 56px 0;
-}
-[data-theme="sketch"] .mech .bridge-line {
-  font-family: 'Caveat', cursive;
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-[data-theme="sketch"] .mech .bridge-detail {
   font-family: 'Kalam', cursive;
   font-style: normal;
-  font-size: 17px;
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--ink);
 }
 
 /* B4 — Table */

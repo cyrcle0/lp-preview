@@ -313,31 +313,20 @@ a {
   z-index: 1;
 }
 
-/* B3 mech-bridge — rhetorical landing of the ownership pillar, transitions
-   to B4 differentiator. Replaces former B3.5 "What you own" block; only
-   the unique network-value-growth claim survives. */
+/* B3 mech-bridge — rhetorical landing line after the ownership pillar.
+   Echoes B4 closer's "Aligned" atom; structural (not ponzi) framing. */
 .mech .mech-bridge {
   text-align: center;
   margin-block: 64px 0;
   padding-top: 40px;
   border-top: 1px solid var(--hairline);
-  max-width: 640px;
-}
-.mech .bridge-line {
-  font-size: 22px;
-  font-weight: 600;
-  max-width: 38ch;
-  margin-inline: auto;
-  margin-block: 0 10px;
-  letter-spacing: -0.006em;
-}
-.mech .bridge-detail {
-  font-size: 15px;
-  color: var(--muted);
+  font-size: 18px;
   font-style: italic;
-  max-width: 52ch;
+  font-weight: 500;
+  color: var(--ink);
+  max-width: 48ch;
   margin-inline: auto;
-  margin-block: 0;
+  line-height: 1.5;
 }
 
 /* B4 — WHY PEOPLE, NOT CAPITAL OR HARDWARE
