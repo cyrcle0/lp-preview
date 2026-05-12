@@ -6,6 +6,20 @@
   <title>[NamePending] — Run. Earn. Own.</title>
   <meta name="description" content="A different network. Owned by real people. Phase 1 Testnet — already live. Your phone validates in the background.">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Sketch-theme toggle: ?style=sketch activates hand-drawn theme.
+    // Loaded conditionally to keep the default sober theme zero-cost.
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      if (p.get('style') === 'sketch') {
+        document.documentElement.setAttribute('data-theme', 'sketch');
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = 'styles-sketch.css';
+        document.head.appendChild(l);
+      }
+    })();
+  </script>
 </head>
 <body>
 
