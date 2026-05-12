@@ -337,6 +337,12 @@ a {
   counter-increment: own-counter;
 }
 .own .own-list li:last-child { border-bottom: 1px solid var(--ink); }
+/* Force real children into col 2 so the body paragraph doesn't fall under
+   the counter column. ::before is a pseudo (not matched by `> *`) so it
+   stays auto-placed in col 1 row 1. */
+.own .own-list li > * {
+  grid-column: 2;
+}
 .own .own-list li::before {
   content: counter(own-counter, decimal-leading-zero);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -556,29 +562,17 @@ a {
   .contributors .card-skel { animation: none; }
 }
 
-/* You card — invitation, dashed border to signal open slot */
+/* You card — minimal invitation, dashed border to signal open slot */
 .contributors .you-card {
   border: 1px dashed var(--ink);
   background: var(--paper);
-  padding: 24px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
+  padding: 20px 24px;
 }
 .contributors .you-card .you-line {
   margin: 0;
   font-size: 16px;
   color: var(--ink);
   font-style: italic;
-}
-.contributors .you-card .you-cta {
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-  white-space: nowrap;
 }
 
 /* B6 — WHERE WE ARE. WHAT'S NEXT. — dated ledger */
@@ -682,6 +676,7 @@ a {
   font-size: 14px;
   color: var(--muted);
   font-style: italic;
+  text-align: center;
 }
 
 /* B8 — FOOTER */
