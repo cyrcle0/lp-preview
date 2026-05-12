@@ -107,15 +107,21 @@ a {
   letter-spacing: 0;
 }
 
-/* B1 — HERO */
+/* B1 — HERO
+   Three cohesive blocks with internal tightness + clear inter-block breaks:
+   1. Header (brand + LIVE pill) — status, tight
+   2. Hero (H1 + claim subhead + factual subhead-2) — rhetorical unit
+   3. Action (CTA + onboard note) — call-and-context */
 .hero {
   text-align: center;
-  padding-top: 128px;
-  padding-bottom: 128px;
+  padding-top: 96px;
+  padding-bottom: 112px;
 }
+
+/* Header block — brand + LIVE pill grouped tight */
 .hero .brand {
   font-size: 13px;
-  margin-block: 0 56px;
+  margin-block: 0 14px;
   letter-spacing: 0.02em;
   color: var(--muted);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -124,11 +130,14 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 5px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 18px;
   font-size: 13px;
   letter-spacing: 0.04em;
-  color: var(--muted);
+  color: var(--ink);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  margin-block: 0 32px;
+  margin-block: 0 80px;
 }
 .hero .live-dot {
   width: 8px;
@@ -142,27 +151,33 @@ a {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
 }
+
+/* Hero block — H1 + tight subheads as one rhetorical unit */
 .hero h1 {
-  margin-block: 0 28px;
+  margin-block: 0 24px;
 }
 .hero .subhead {
-  max-width: 56ch;
-  margin-block: 0 16px;
+  max-width: 50ch;
+  margin-block: 0 14px;
   margin-inline: auto;
-  font-size: 17px;
+  font-size: 19px;
   color: var(--ink);
   font-style: italic;
+  font-weight: 400;
 }
 .hero .subhead-2 {
-  max-width: 56ch;
-  margin-block: 0 44px;
+  max-width: 52ch;
+  margin-block: 0 56px;
   margin-inline: auto;
   font-size: 15px;
   color: var(--muted);
-  font-style: italic;
+  font-style: normal;
+  line-height: 1.55;
 }
+
+/* Action block — CTA + note tight */
 .hero .cta-note {
-  margin-block: 20px 0;
+  margin-block: 16px 0;
   font-size: 14px;
   color: var(--muted);
   font-style: italic;
