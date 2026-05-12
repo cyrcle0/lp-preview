@@ -313,7 +313,9 @@ a {
   z-index: 1;
 }
 
-/* B3.5 — WHAT YOU OWN */
+/* B3.5 — WHAT YOU OWN
+   Three items in a hairline-divided list, each with H3 + body.
+   Counter pattern echoes B3 pillars (01/02/03 step markers). */
 .own { text-align: left; }
 .own h2 {
   text-align: center;
@@ -321,14 +323,30 @@ a {
 }
 .own .own-list {
   list-style: none;
+  counter-reset: own-counter;
   padding: 0;
   margin-block: 0 var(--space-xl);
+  border-top: 1px solid var(--ink);
 }
 .own .own-list li {
-  padding-block: 18px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  column-gap: 32px;
+  padding-block: 22px;
   border-bottom: 1px solid var(--hairline);
+  counter-increment: own-counter;
 }
-.own .own-list li:last-child { border-bottom: 0; }
+.own .own-list li:last-child { border-bottom: 1px solid var(--ink); }
+.own .own-list li::before {
+  content: counter(own-counter, decimal-leading-zero);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+  align-self: start;
+}
 .own .own-list h3 {
   margin-block: 0 6px;
   font-weight: 700;
@@ -349,9 +367,11 @@ a {
   margin-block: 0;
 }
 
-/* B4 — WHY PEOPLE, NOT CAPITAL OR HARDWARE */
+/* B4 — WHY PEOPLE, NOT CAPITAL OR HARDWARE
+   Per /ui table rules: horizontal lines only, no vertical lines,
+   no outer borders. Tinted column highlights Weos approach. */
 .diff { text-align: center; }
-.diff h2 { text-align: center; margin-block: 0 var(--space-l); }
+.diff h2 { text-align: center; margin-block: 0 var(--space-xl); }
 .diff .table-wrap {
   max-width: var(--col-wide);
   width: 100%;
@@ -363,31 +383,30 @@ a {
   border-collapse: collapse;
   font-size: 15px;
   line-height: 1.45;
-  border: 1px solid var(--rule);
   background: var(--paper);
   text-align: left;
 }
 .diff th, .diff td {
-  border-top: 1px solid var(--rule);
-  border-right: 1px solid var(--rule);
-  padding: 16px 18px;
+  border-top: 1px solid var(--hairline);
+  padding: 18px 20px;
   vertical-align: top;
   font-weight: 400;
 }
-.diff th:last-child, .diff td:last-child { border-right: 0; }
 .diff thead th {
   border-top: 0;
+  border-bottom: 1px solid var(--ink);
   font-weight: 700;
   font-size: 14px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   letter-spacing: 0.01em;
   line-height: 1.35;
+  vertical-align: bottom;
 }
 .diff thead th[scope="col"]:first-child {
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
   font-weight: 600;
 }
@@ -403,7 +422,8 @@ a {
   font-weight: 600;
   width: 1%;
   white-space: nowrap;
-  padding-right: 24px;
+  padding-right: 28px;
+  color: var(--ink);
 }
 .diff .pop { background: var(--pop-tint); }
 .diff thead .pop { font-weight: 700; }
@@ -413,12 +433,17 @@ a {
 .diff .highlight-row td {
   background: var(--highlight);
   font-weight: 600;
+  border-top-color: var(--ink);
 }
 .diff .highlight-row th[scope="row"] {
   font-weight: 700;
 }
 
-/* B5 — CONTRIBUTORS */
+/* B5 — CONTRIBUTORS
+   Skeleton placeholders telegraph final card shape (avatar circle +
+   name bar + role bar + link bars for Core; handle + bio bars for
+   Community). Subtle pulse animation signals "loading / coming soon"
+   without overwhelming the page. */
 .contributors { text-align: center; }
 .contributors .contributors-h {
   text-align: center;
@@ -436,10 +461,24 @@ a {
   font-size: 15px;
   margin-block: 0 16px;
   letter-spacing: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.contributors .sub-label-meta {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 .contributors .cards {
   display: grid;
   gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .contributors .cards-5 {
   grid-template-columns: repeat(5, 1fr);
@@ -448,44 +487,98 @@ a {
   grid-template-columns: repeat(3, 1fr);
 }
 .contributors .card {
-  padding: 16px 14px;
+  padding: 18px 16px;
   border: 1px solid var(--hairline);
   background: var(--paper);
-  font-size: 13px;
-  line-height: 1.45;
-  min-height: 110px;
 }
-.contributors .card h3 {
-  font-size: 13px;
-  margin-block: 0 6px;
-  font-weight: 700;
-  color: var(--muted);
+
+/* Skeleton primitives — gray bars + circles that hint at final shape */
+.contributors .card-skel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 150px;
+  animation: skel-pulse 2.4s ease-in-out infinite;
 }
-.contributors .card .role {
-  margin-block: 0 6px;
-  font-size: 12px;
-  color: var(--muted);
-  font-style: italic;
+.contributors .card-skel-compact {
+  min-height: 100px;
+  gap: 8px;
 }
-.contributors .card .card-link-row {
-  margin-block: 0;
-  font-size: 12px;
-  color: var(--muted);
+.contributors .skel-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d8d8d2;
+  margin-block: 0 4px;
 }
-.contributors .you-card-minimal {
-  border: 1px dashed var(--hairline);
+.contributors .skel-line {
+  height: 8px;
+  border-radius: 3px;
+  background: var(--hairline);
+  display: block;
+}
+.contributors .skel-line-name {
+  width: 65%;
+  height: 10px;
+  background: #c8c8c2;
+}
+.contributors .skel-line-role {
+  width: 85%;
+  height: 7px;
+}
+.contributors .skel-links {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.contributors .skel-line-link {
+  width: 32px;
+  height: 6px;
+}
+.contributors .skel-line-handle {
+  width: 50%;
+  height: 9px;
+  background: #c8c8c2;
+}
+.contributors .skel-line-bio {
+  width: 95%;
+}
+.contributors .skel-line-bio-short {
+  width: 70%;
+}
+
+@keyframes skel-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contributors .card-skel { animation: none; }
+}
+
+/* You card — invitation, dashed border to signal open slot */
+.contributors .you-card {
+  border: 1px dashed var(--ink);
   background: var(--paper);
-  min-height: 80px;
-  padding: 20px;
+  padding: 24px 28px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
 }
-.contributors .placeholder-q {
+.contributors .you-card .you-line {
   margin: 0;
-  font-size: 18px;
-  color: var(--muted);
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 16px;
+  color: var(--ink);
+  font-style: italic;
+}
+.contributors .you-card .you-cta {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  white-space: nowrap;
 }
 
 /* B6 — WHERE WE ARE. WHAT'S NEXT. — dated ledger */
@@ -646,12 +739,24 @@ footer .links a {
   .diff thead th { font-size: 12px; }
   .diff thead .paren { display: block; margin-left: 0; margin-top: 2px; }
 
-  /* B5 contributors — stack to 2 columns on mobile */
+  /* B3.5 own-list — tighten counter column on mobile */
+  .own .own-list li {
+    grid-template-columns: 40px 1fr;
+    column-gap: 20px;
+  }
+
+  /* B5 contributors — stack cards on mobile */
   .contributors .cards-5 {
     grid-template-columns: repeat(2, 1fr);
   }
   .contributors .cards-3 {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .contributors .card-skel { min-height: 130px; }
+  .contributors .you-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   /* B6 ledger — stack rows */
