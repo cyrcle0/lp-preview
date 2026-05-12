@@ -29,15 +29,18 @@
   line-height: 1.6;
 }
 
-/* All bands paper — no alternation in sketch mode */
+/* Alternating paper tones for section definition.
+   --paper is the lighter cream; --paper-warm is ~11% darker warm cream —
+   enough contrast to define section boundaries while staying inside the
+   notebook-paper family (no solid color blocks per spec). */
 [data-theme="sketch"] .band {
   background: var(--paper);
 }
 [data-theme="sketch"] .band-light {
-  background: var(--paper);
+  background: #e8dfc2;
   background-image:
-    radial-gradient(ellipse at 15% 25%, rgba(0, 0, 0, 0.018) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 75%, rgba(0, 0, 0, 0.018) 0%, transparent 55%);
+    radial-gradient(ellipse at 15% 25%, rgba(0, 0, 0, 0.025) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 75%, rgba(0, 0, 0, 0.025) 0%, transparent 55%);
 }
 
 /* Type */
