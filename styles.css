@@ -10,6 +10,7 @@
   --hairline: #e2e2dc;
   --muted: #6b6b6b;
   --pop-tint: #f7f3ea;
+  --highlight: #fff3a0;
   --col: 760px;
   --col-wide: 960px;
   --gutter: 24px;
@@ -89,9 +90,14 @@ a {
   color: var(--ink);
 }
 
-/* Italic ratification / transition / ease-anchor convention.
-   Used at: B1 eyebrow, B1 cta-note, B2 ease, B3 eyebrow + thematic, B4 closing,
-   B7 opener + cta-note, B8 closer. Smaller, accent-toned, often centered. */
+/* Yellow highlight used to mark verb-of-the-page atom (B1 sub "doing"). */
+.highlight {
+  background: var(--highlight);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+/* Italic ratification / transition / ease-anchor convention. */
 .eyebrow-italic {
   font-style: italic;
   font-size: 14px;
@@ -109,22 +115,51 @@ a {
 }
 .hero .brand {
   font-size: 13px;
-  margin-block: 0 80px;
+  margin-block: 0 56px;
   letter-spacing: 0.02em;
   color: var(--muted);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
-.hero .eyebrow-italic {
+.hero .live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   margin-block: 0 32px;
+}
+.hero .live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c83a3a;
+  display: inline-block;
+  animation: live-pulse 1.8s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
 }
 .hero h1 {
   margin-block: 0 28px;
 }
 .hero .subhead {
   max-width: 56ch;
-  margin-block: 0 44px;
+  margin-block: 0 16px;
+  margin-inline: auto;
   font-size: 17px;
   color: var(--ink);
+  font-style: italic;
+}
+.hero .subhead-2 {
+  max-width: 56ch;
+  margin-block: 0 44px;
+  margin-inline: auto;
+  font-size: 15px;
+  color: var(--muted);
+  font-style: italic;
 }
 .hero .cta-note {
   margin-block: 20px 0;
@@ -160,7 +195,7 @@ a {
   text-align: center;
   margin-block: 0 var(--space-m);
 }
-.proof .ease {
+.proof .anchor {
   font-style: italic;
   font-size: 15px;
   color: var(--muted);
@@ -190,11 +225,11 @@ a {
 }
 .proof .stats .label {
   font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.14em;
+  font-size: 13px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 16px;
+  margin-block: 0 12px;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 .proof .stat-list {
@@ -209,21 +244,9 @@ a {
 .mech .eyebrow-italic { margin-block: 0 var(--space-m); }
 .mech h2 {
   text-align: center;
-  margin-block: 0 var(--space-m);
-  max-width: 22ch;
-}
-.mech .thematic {
-  font-style: italic;
-  text-align: center;
-  font-size: 16px;
-  color: var(--muted);
   margin-block: 0 var(--space-xl);
-  max-width: 48ch;
-  margin-inline: auto;
+  max-width: 28ch;
 }
-/* B3 pillars — vertical flow.
-   Left rail: 01 → 02 → 03 → 04 step markers connected by a continuous down-line.
-   Right column: stacked pillar paragraphs aligned to each step. */
 .mech .pillars {
   list-style: none;
   padding: 0;
@@ -254,20 +277,19 @@ a {
   grid-column: 2;
   align-self: start;
 }
-.mech .pillar h3 {
-  margin-block: 0 8px;
-  font-weight: 700;
-}
 .mech .pillar p {
   font-size: 15px;
   line-height: 1.6;
   color: var(--ink);
   margin-block: 0;
 }
+.mech .pillar p strong {
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.006em;
+}
 
-/* Down-arrow drawn under each step number, spanning the full pillar height.
-   Line is anchored to .pillar (so it inherits the row's full height); chevron
-   sits at the line's terminus, just above the next step. */
+/* Down-arrow drawn under each step number. */
 .mech .pillar:not(:last-of-type)::after {
   content: "";
   position: absolute;
@@ -291,7 +313,43 @@ a {
   z-index: 1;
 }
 
-/* B4 — WHAT'S ACTUALLY DIFFERENT */
+/* B3.5 — WHAT YOU OWN */
+.own { text-align: left; }
+.own h2 {
+  text-align: center;
+  margin-block: 0 var(--space-xl);
+}
+.own .own-list {
+  list-style: none;
+  padding: 0;
+  margin-block: 0 var(--space-xl);
+}
+.own .own-list li {
+  padding-block: 18px;
+  border-bottom: 1px solid var(--hairline);
+}
+.own .own-list li:last-child { border-bottom: 0; }
+.own .own-list h3 {
+  margin-block: 0 6px;
+  font-weight: 700;
+}
+.own .own-list p {
+  margin-block: 0;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+.own .closer {
+  font-style: italic;
+  text-align: center;
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 48ch;
+  margin-inline: auto;
+  margin-block: 0;
+}
+
+/* B4 — WHY PEOPLE, NOT CAPITAL OR HARDWARE */
 .diff { text-align: center; }
 .diff h2 { text-align: center; margin-block: 0 var(--space-l); }
 .diff .table-wrap {
@@ -304,7 +362,7 @@ a {
   width: 100%;
   border-collapse: collapse;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.45;
   border: 1px solid var(--rule);
   background: var(--paper);
   text-align: left;
@@ -321,9 +379,10 @@ a {
   border-top: 0;
   font-weight: 700;
   font-size: 14px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  letter-spacing: 0.02em;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
 }
 .diff thead th[scope="col"]:first-child {
   letter-spacing: 0.14em;
@@ -331,6 +390,14 @@ a {
   font-size: 12px;
   color: var(--muted);
   font-weight: 600;
+}
+.diff thead .paren {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-left: 4px;
 }
 .diff tbody th[scope="row"] {
   font-weight: 600;
@@ -340,37 +407,91 @@ a {
 }
 .diff .pop { background: var(--pop-tint); }
 .diff thead .pop { font-weight: 700; }
-.diff .closing {
-  font-style: italic;
-  font-size: 15px;
-  color: var(--muted);
-  margin-block: var(--space-l) 0;
-  text-align: center;
-  max-width: 52ch;
-  margin-inline: auto;
+
+/* Highlighted row (Earn from) — payoff row, yellow band. */
+.diff .highlight-row th,
+.diff .highlight-row td {
+  background: var(--highlight);
+  font-weight: 600;
+}
+.diff .highlight-row th[scope="row"] {
+  font-weight: 700;
 }
 
-/* B5 — TEAM placeholder (intentional probe) */
-.team {
+/* B5 — CONTRIBUTORS */
+.contributors { text-align: center; }
+.contributors .contributors-h {
   text-align: center;
-  padding-top: 144px;
-  padding-bottom: 144px;
+  margin-block: 0 var(--space-xl);
 }
-.team h2 {
-  font-weight: 500;
-  letter-spacing: 0.06em;
+.contributors .contributors-block {
+  margin-block: 0 var(--space-xl);
+  text-align: left;
+}
+.contributors .contributors-block:last-of-type {
+  margin-bottom: 0;
+}
+.contributors .sub-label {
+  font-weight: 700;
+  font-size: 15px;
+  margin-block: 0 16px;
+  letter-spacing: 0;
+}
+.contributors .cards {
+  display: grid;
+  gap: 12px;
+}
+.contributors .cards-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.contributors .cards-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.contributors .card {
+  padding: 16px 14px;
+  border: 1px solid var(--hairline);
+  background: var(--paper);
+  font-size: 13px;
+  line-height: 1.45;
+  min-height: 110px;
+}
+.contributors .card h3 {
+  font-size: 13px;
+  margin-block: 0 6px;
+  font-weight: 700;
   color: var(--muted);
+}
+.contributors .card .role {
+  margin-block: 0 6px;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+.contributors .card .card-link-row {
+  margin-block: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.contributors .you-card-minimal {
+  border: 1px dashed var(--hairline);
+  background: var(--paper);
+  min-height: 80px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.contributors .placeholder-q {
+  margin: 0;
   font-size: 18px;
+  color: var(--muted);
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
-/* B6 — RECENTLY SHIPPED — dated ledger */
+/* B6 — WHERE WE ARE. WHAT'S NEXT. — dated ledger */
 .shipped .shipped-h {
   text-align: center;
   margin-block: 0 var(--space-xl);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 22px;
 }
 .shipped .ledger {
   list-style: none;
@@ -403,6 +524,19 @@ a {
   text-decoration-thickness: 1px;
   font-size: 15px;
 }
+.shipped .ledger .next-row .when {
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 500;
+}
+.shipped .ledger .next-row .what {
+  color: var(--muted);
+}
+.shipped .ledger .next-row .placeholder-q {
+  font-size: 18px;
+  color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
 
 /* B7 — SIGNUP */
 .signup { text-align: center; }
@@ -429,31 +563,21 @@ a {
   font-family: inherit;
   background: var(--paper);
   color: var(--ink);
-  margin-block: 0 28px;
+  margin-block: 0 24px;
 }
 .signup input[type="email"]:focus {
   outline: 2px solid var(--ink);
   outline-offset: -1px;
 }
-.signup .question {
-  font-size: 14px;
-  margin-block: 0 14px;
-  color: var(--muted);
-}
-.signup .radios {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-block: 0 36px;
-}
-.signup .radios label {
+.signup .checkbox-label {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 15px;
   cursor: pointer;
+  margin-block: 0 32px;
 }
-.signup .radios input[type="radio"] {
+.signup .checkbox-label input[type="checkbox"] {
   accent-color: var(--ink);
   width: 16px;
   height: 16px;
@@ -488,16 +612,10 @@ footer .links {
   gap: 16px;
   font-size: 15px;
   align-items: start;
+  justify-items: center;
 }
 footer .links .col .row {
   margin-bottom: 6px;
-}
-footer .links .col-label {
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 footer .links a {
   color: var(--ink);
@@ -512,9 +630,8 @@ footer .links a {
   h1 { font-size: 38px; }
   h2 { font-size: 24px; }
   .hero { padding-top: 80px; padding-bottom: 80px; }
-  .hero .brand { margin-bottom: 56px; }
+  .hero .brand { margin-bottom: 40px; }
 
-  /* B3 pillars — tighter rail on mobile, same vertical-flow shape */
   .mech .pillars {
     grid-template-columns: 40px 1fr;
     column-gap: 20px;
@@ -524,11 +641,18 @@ footer .links a {
 
   /* B4 table — preserve all cells, allow horizontal scroll */
   .diff .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .diff table { font-size: 14px; min-width: 560px; }
+  .diff table { font-size: 13px; min-width: 600px; }
   .diff th, .diff td { padding: 12px 12px; }
+  .diff thead th { font-size: 12px; }
+  .diff thead .paren { display: block; margin-left: 0; margin-top: 2px; }
 
-  /* B5 team probe — keep proportional vertical space */
-  .team { padding-top: 96px; padding-bottom: 96px; }
+  /* B5 contributors — stack to 2 columns on mobile */
+  .contributors .cards-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contributors .cards-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   /* B6 ledger — stack rows */
   .shipped .ledger li {
