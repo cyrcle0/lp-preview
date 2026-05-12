@@ -515,6 +515,37 @@
   opacity: 0.75;
 }
 
+/* When rough.js has loaded, CSS dashed fallbacks yield to genuine
+   rough-drawn SVG elements. Body gets .rough-loaded class via
+   sketch-init.js after rough.js fetches successfully. If rough.js fails
+   to load (network/CDN), .rough-loaded never sets and CSS dashed
+   borders remain in place — graceful degradation. */
+[data-theme="sketch"] body.rough-loaded .diff .table-wrap {
+  border-color: transparent;
+}
+[data-theme="sketch"] body.rough-loaded .diff .table-wrap::before {
+  display: none;
+}
+[data-theme="sketch"] body.rough-loaded .contributors .skel-avatar {
+  border-color: transparent;
+  background: transparent;
+}
+[data-theme="sketch"] body.rough-loaded .hero h1::after {
+  display: none;
+}
+
+/* Rough.js SVG containers — pointer-events disabled, sit behind content */
+[data-theme="sketch"] .rough-svg {
+  z-index: 0;
+}
+[data-theme="sketch"] .diff .table-wrap {
+  overflow: visible;
+}
+[data-theme="sketch"] .diff .table-wrap > *:not(.rough-svg) {
+  position: relative;
+  z-index: 1;
+}
+
 /* Responsive — hand-drawn theme mobile adjustments */
 @media (max-width: 720px) {
   [data-theme="sketch"] h1 { font-size: 56px; }
