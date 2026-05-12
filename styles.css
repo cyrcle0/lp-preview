@@ -313,62 +313,29 @@ a {
   z-index: 1;
 }
 
-/* B3.5 — WHAT YOU OWN
-   Three items in a hairline-divided list, each with H3 + body.
-   Counter pattern echoes B3 pillars (01/02/03 step markers). */
-.own { text-align: left; }
-.own h2 {
+/* B3 mech-bridge — rhetorical landing of the ownership pillar, transitions
+   to B4 differentiator. Replaces former B3.5 "What you own" block; only
+   the unique network-value-growth claim survives. */
+.mech .mech-bridge {
   text-align: center;
-  margin-block: 0 var(--space-xl);
+  margin-block: 64px 0;
+  padding-top: 40px;
+  border-top: 1px solid var(--hairline);
+  max-width: 640px;
 }
-.own .own-list {
-  list-style: none;
-  counter-reset: own-counter;
-  padding: 0;
-  margin-block: 0 var(--space-xl);
-  border-top: 1px solid var(--ink);
+.mech .bridge-line {
+  font-size: 22px;
+  font-weight: 600;
+  max-width: 38ch;
+  margin-inline: auto;
+  margin-block: 0 10px;
+  letter-spacing: -0.006em;
 }
-.own .own-list li {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  column-gap: 32px;
-  padding-block: 22px;
-  border-bottom: 1px solid var(--hairline);
-  counter-increment: own-counter;
-}
-.own .own-list li:last-child { border-bottom: 1px solid var(--ink); }
-/* Force real children into col 2 so the body paragraph doesn't fall under
-   the counter column. ::before is a pseudo (not matched by `> *`) so it
-   stays auto-placed in col 1 row 1. */
-.own .own-list li > * {
-  grid-column: 2;
-}
-.own .own-list li::before {
-  content: counter(own-counter, decimal-leading-zero);
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  padding-top: 2px;
-  align-self: start;
-}
-.own .own-list h3 {
-  margin-block: 0 6px;
-  font-weight: 700;
-}
-.own .own-list p {
-  margin-block: 0;
+.mech .bridge-detail {
   font-size: 15px;
-  color: var(--ink);
-  line-height: 1.55;
-}
-.own .closer {
-  font-style: italic;
-  text-align: center;
-  font-size: 16px;
   color: var(--muted);
-  max-width: 48ch;
+  font-style: italic;
+  max-width: 52ch;
   margin-inline: auto;
   margin-block: 0;
 }
@@ -733,12 +700,6 @@ footer .links a {
   .diff th, .diff td { padding: 12px 12px; }
   .diff thead th { font-size: 12px; }
   .diff thead .paren { display: block; margin-left: 0; margin-top: 2px; }
-
-  /* B3.5 own-list — tighten counter column on mobile */
-  .own .own-list li {
-    grid-template-columns: 40px 1fr;
-    column-gap: 20px;
-  }
 
   /* B5 contributors — stack cards on mobile */
   .contributors .cards-5 {

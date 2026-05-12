@@ -77,7 +77,6 @@
 [data-theme="sketch"] .live-pill,
 [data-theme="sketch"] .mech .pillar .step,
 [data-theme="sketch"] .proof .stats .label,
-[data-theme="sketch"] .own .own-list li::before,
 [data-theme="sketch"] .contributors .sub-label-meta,
 [data-theme="sketch"] .hero .brand,
 [data-theme="sketch"] .shipped .ledger .when {
@@ -242,37 +241,21 @@
   margin-right: 2px;
 }
 
-/* B3.5 — Own list */
-[data-theme="sketch"] .own .own-list {
+/* B3 mech-bridge — rhetorical landing of ownership pillar before B4 */
+[data-theme="sketch"] .mech .mech-bridge {
   border-top: 1.5px dashed var(--ink);
+  margin-block: 56px 0;
 }
-[data-theme="sketch"] .own .own-list li {
-  border-bottom: 1.5px dashed var(--hairline);
+[data-theme="sketch"] .mech .bridge-line {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0;
 }
-[data-theme="sketch"] .own .own-list li:last-child {
-  border-bottom: 1.5px dashed var(--ink);
-}
-[data-theme="sketch"] .own .own-list li::before {
-  border: 1.5px dashed var(--ink);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0;
-  font-size: 14px;
-  color: var(--ink);
-}
-[data-theme="sketch"] .own .own-list p {
-  font-family: 'Kalam', cursive;
-  font-size: 17px;
-}
-[data-theme="sketch"] .own .closer {
+[data-theme="sketch"] .mech .bridge-detail {
   font-family: 'Kalam', cursive;
   font-style: normal;
   font-size: 17px;
-  color: var(--muted);
 }
 
 /* B4 — Table */
