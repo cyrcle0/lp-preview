@@ -108,19 +108,8 @@
 }
 [data-theme="sketch"] .hero h1 {
   position: relative;
-  display: inline-block;
-}
-[data-theme="sketch"] .hero h1::after {
-  content: "";
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  bottom: -8px;
-  height: 6px;
-  background: var(--ink);
-  border-radius: 50% / 80%;
-  transform: rotate(-0.5deg);
-  opacity: 0.85;
+  /* Block-level so .live-pill above flows on its own line.
+     Rough.js draws the underline; no CSS pseudo fallback needed. */
 }
 [data-theme="sketch"] .hero .subhead {
   font-family: 'Kalam', cursive;
@@ -529,9 +518,6 @@
 [data-theme="sketch"] body.rough-loaded .contributors .skel-avatar {
   border-color: transparent;
   background: transparent;
-}
-[data-theme="sketch"] body.rough-loaded .hero h1::after {
-  display: none;
 }
 
 /* Rough.js SVG containers — pointer-events disabled, sit behind content */
