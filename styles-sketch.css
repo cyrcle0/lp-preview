@@ -172,12 +172,6 @@
 [data-theme="sketch"] .btn:hover { background: #2a2520; }
 
 /* B2 — Phone proof */
-[data-theme="sketch"] .proof .anchor {
-  font-family: 'Kalam', cursive;
-  font-style: normal;
-  font-size: 18px;
-  color: var(--ink);
-}
 [data-theme="sketch"] .phone {
   border: 1.5px dashed var(--ink);
   background: var(--paper);

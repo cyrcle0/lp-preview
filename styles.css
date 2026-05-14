@@ -208,15 +208,7 @@ a {
 .proof { text-align: center; }
 .proof h2 {
   text-align: center;
-  margin-block: 0 var(--space-m);
-}
-.proof .anchor {
-  font-style: italic;
-  font-size: 15px;
-  color: var(--muted);
   margin-block: 0 var(--space-xl);
-  max-width: 48ch;
-  margin-inline: auto;
 }
 .phone {
   width: 196px;
