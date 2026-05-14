@@ -391,11 +391,6 @@
   text-decoration-thickness: 1px;
   font-size: 16px;
 }
-[data-theme="sketch"] .shipped .ledger .next-row .placeholder-q {
-  font-family: 'Architects Daughter', cursive;
-  font-size: 20px;
-}
-
 /* B7 — Signup form */
 [data-theme="sketch"] .signup .opener {
   font-family: 'Caveat', cursive;

@@ -538,7 +538,7 @@ a {
   font-style: italic;
 }
 
-/* B6 — WHERE WE ARE. WHAT'S NEXT. — dated ledger */
+/* B6 — WHERE WE ARE. — dated ledger */
 .shipped .shipped-h {
   text-align: center;
   margin-block: 0 var(--space-xl);
@@ -573,19 +573,6 @@ a {
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   font-size: 15px;
-}
-.shipped .ledger .next-row .when {
-  color: var(--muted);
-  font-style: italic;
-  font-weight: 500;
-}
-.shipped .ledger .next-row .what {
-  color: var(--muted);
-}
-.shipped .ledger .next-row .placeholder-q {
-  font-size: 18px;
-  color: var(--muted);
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 /* B7 — SIGNUP */
