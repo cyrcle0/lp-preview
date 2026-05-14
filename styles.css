@@ -223,7 +223,7 @@ a {
   height: 360px;
   border: 1px solid var(--rule);
   margin-inline: auto;
-  margin-block: 0 var(--space-xl);
+  margin-block: 0 var(--space-l);
   display: flex;
   align-items: center;
   justify-content: center;
