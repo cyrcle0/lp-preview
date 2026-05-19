@@ -210,17 +210,14 @@
   padding: 0;
   color: var(--ink);
 }
-[data-theme="sketch"] .mech .pillar:not(:last-of-type)::after {
+[data-theme="sketch"] .mech .pillar::after {
   background: var(--ink);
   opacity: 0.4;
   left: 19px;
   top: 42px;
-  bottom: 14px;
+  bottom: 40px;
 }
-[data-theme="sketch"] .mech .pillar:not(:last-of-type)::before {
-  left: 15px;
-  border-color: var(--ink);
-}
+[data-theme="sketch"] .mech .pillar:last-of-type::after { bottom: 0; }
 [data-theme="sketch"] .mech .pillar p {
   font-family: 'Kalam', cursive;
   font-size: 17px;

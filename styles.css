@@ -296,29 +296,20 @@ a {
   letter-spacing: -0.006em;
 }
 
-/* Down-arrow drawn under each step number. */
-.mech .pillar:not(:last-of-type)::after {
+/* Per-step rail — each step owns a self-contained vertical line running from
+   under its step number to the end of that step's content. No inter-step
+   connector: when a disclosure panel opens the rail grows with its own step,
+   and the pillar padding-bottom leaves a clear gap to the next step's rail. */
+.mech .pillar::after {
   content: "";
   position: absolute;
-  top: 26px;
-  bottom: 16px;
+  top: 24px;
+  bottom: 40px;
   left: 8px;
   width: 1px;
   background: var(--ink);
 }
-.mech .pillar:not(:last-of-type)::before {
-  content: "";
-  position: absolute;
-  bottom: 12px;
-  left: 4px;
-  width: 8px;
-  height: 8px;
-  border-right: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  transform: rotate(45deg);
-  transform-origin: center;
-  z-index: 1;
-}
+.mech .pillar:last-of-type::after { bottom: 0; }
 
 /* B3 mech-bridge — rhetorical landing line after the ownership pillar.
    Echoes B4 closer's "Aligned" atom; structural (not ponzi) framing. */
@@ -336,9 +327,42 @@ a {
   line-height: 1.5;
 }
 
+/* B3 — progressive disclosure under a pillar step. Native <details>, no JS.
+   The per-step rail is anchored top/bottom in the step-number column, so an
+   expanding panel lengthens the rail cleanly without affecting other steps. */
+.mech .pillar .mech-more { margin-top: 14px; }
+.mech .pillar .mech-more > summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.mech .pillar .mech-more > summary::-webkit-details-marker { display: none; }
+.mech .pillar .mech-more > summary::before {
+  content: "+ ";
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+.mech .pillar .mech-more[open] > summary::before { content: "\2013 "; }
+.mech .pillar .mech-more > summary:hover { color: var(--ink); }
+.mech .pillar .mech-more-body {
+  margin-top: 12px;
+  padding-left: 14px;
+  border-left: 1px solid var(--hairline);
+}
+.mech .pillar .mech-more-body p { margin-block: 0 10px; }
+.mech .pillar .mech-more-body p:last-child { margin-bottom: 0; }
+.mech .pillar .mech-more-body ol {
+  margin: 0 0 10px;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
 /* B4 — WHY PEOPLE, NOT CAPITAL OR HARDWARE
    Per /ui table rules: horizontal lines only, no vertical lines,
-   no outer borders. Tinted column highlights Weos approach. */
+   no outer borders. Tinted column highlights this approach. */
 .diff { text-align: center; }
 .diff h2 { text-align: center; margin-block: 0 var(--space-xl); }
 .diff .table-wrap {
@@ -573,6 +597,37 @@ a {
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   font-size: 15px;
+}
+
+/* FAQ — objection-clearing accordion before the form. Native <details>, no JS. */
+.faq { text-align: left; }
+.faq h2 { text-align: center; margin-block: 0 var(--space-xl); }
+.faq .faq-list { max-width: 640px; margin-inline: auto; }
+.faq details { border-top: 1px solid var(--hairline); padding-block: 18px; }
+.faq details:last-child { border-bottom: 1px solid var(--hairline); }
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+.faq details[open] summary::after { content: "\2013"; }
+.faq details p {
+  margin-block: 12px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 60ch;
 }
 
 /* B7 — SIGNUP */
